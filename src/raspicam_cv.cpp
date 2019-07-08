@@ -114,7 +114,7 @@ namespace raspicam {
         case cv::CAP_PROP_EXPOSURE :
             if ( _impl->getShutterSpeed() ==0 )
                 return -1;//auto
-            else return Scaler::scale (0,330000, 0,100, _impl->getShutterSpeed() )  ;
+            else return _impl->getShutterSpeed();
 	   break;
         default :
             return -1;
@@ -164,8 +164,8 @@ namespace raspicam {
             _impl->setISO ( Scaler::scale ( 0,100,0,800, value ) );
             break;
         case cv::CAP_PROP_EXPOSURE :
-            if ( value>0 && value<=100 ) { 
-                _impl->setShutterSpeed ( Scaler::scale ( 0,100,0,330000, value ) );
+            if ( value>0 && value<=330000 ) { 
+                _impl->setShutterSpeed ( value );
             } else {
                 _impl->setExposure ( RASPICAM_EXPOSURE_AUTO );
                 _impl->setShutterSpeed ( 0 );
