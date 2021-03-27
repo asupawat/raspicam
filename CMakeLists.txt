@@ -27,6 +27,8 @@ ENDIF()
 # Lib Names and Dirs
 #------------------------------------------------------
 
+set (CMAKE_SHARED_LINKER_FLAGS "-Wl,--no-as-needed")
+
     # Postfix of so's:
 set(PROJECT_DLLVERSION)
 SET(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${CMAKE_INSTALL_PREFIX}/lib/cmake/ /usr/lib/cmake)
